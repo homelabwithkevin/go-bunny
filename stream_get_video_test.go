@@ -28,4 +28,10 @@ func TestStreamGetVideoCRUD(t *testing.T) {
 		videoLibraryId,
 		"library id is incorrect",
 	)
+	assert.Equal(
+		t,
+		videoInformation.Guid,
+		videoId,
+		"video id/guid is incorrect",
+	)
 }
