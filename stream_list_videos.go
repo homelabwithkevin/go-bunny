@@ -16,12 +16,42 @@ type StreamVideoList struct {
 	Items        []StreamVideo `json:"items,omitempty"`
 }
 
-// Lists the Videos of the given Library Id
+// StreamVideos represents the response of the List Videos of the Stream Manage Videos API endpoint.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_list
-func (s *StreamService) List(ctx context.Context, videoLibraryId int64) (*StreamVideo, error) {
-	options := fmt.Sprintf("?page=%d&itemsPerPage=%d&orderBy=date", DefaultPaginationPage, DefaultPaginationPerPage)
-	path := fmt.Sprintf("library/%d/videos%s", videoLibraryId, options)
+type StreamVideos PaginationReply[StreamVideo]
 
-	return resourceGet[StreamVideo](ctx, s.client, path, nil)
+// StreamVideoListListOpts represents both PaginationOptions and the other optional query parameters of the List endpoint.
+type StreamVideoListListOpts struct {
+	VideoLibraryGetOpts
+	PaginationOptions
+}
+
+// List retrieves the Videos in the Stream Library, by Library Id
+// Bunny.net API docs: https://docs.bunny.net/reference/video_list
+func (s *StreamService) List(ctx context.Context, videoLibraryId int64, opts *StreamVideoListListOpts) (*StreamVideos, error) {
+	path := fmt.Sprintf("/library/%d/videos", videoLibraryId)
+	var res StreamVideos
+
+	if opts == nil {
+		opts = &StreamVideoListListOpts{
+			PaginationOptions: PaginationOptions{
+				Page:    DefaultPaginationPage,
+				PerPage: DefaultPaginationPerPage,
+			},
+		}
+	} else {
+		opts.ensureConstraints()
+	}
+
+	req, err := s.client.newGetRequest(path, opts)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := s.client.sendRequest(ctx, req, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
 }
