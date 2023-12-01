@@ -15,8 +15,8 @@ type Captions struct {
 
 type Chapters struct {
 	Title string `json:"title,omitempty"`
-	Start string `json:"start,omitempty"`
-	End   string `json:"end,omitempty"`
+	Start int32  `json:"start,omitempty"`
+	End   int32  `json:"end,omitempty"`
 }
 
 type Moments struct {
