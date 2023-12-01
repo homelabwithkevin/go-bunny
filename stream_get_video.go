@@ -21,7 +21,7 @@ type Chapters struct {
 
 type Moments struct {
 	Label     string `json:"label,omitempty"`
-	Timestamp string `json:"timestamp,omitempty"`
+	Timestamp int32  `json:"timestamp,omitempty"`
 }
 
 type MetaTags struct {
