@@ -16,7 +16,7 @@ type StreamVideoListListOpts struct {
 	PaginationOptions
 }
 
-// List retrieves the Videos in th
+// List retrieves the Videos in the Stream's Library Id
 // if opts.Page or or opts.PerPage is < 1, the related DefaultPagination values are used.e Stream Library, by Library Id
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_list
