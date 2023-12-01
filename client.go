@@ -18,10 +18,9 @@ import (
 
 const (
 	// BaseURL is the base URL of the Bunny CDN HTTP API.
-	// BaseURL = "https://api.bunny.net"
+	BaseURL = "https://api.bunny.net"
 
 	// VideoURL is the base URL of the Bunny Stream HTTP API.
-	BaseURL  = "https://video.bunnycdn.com"
 	VideoURL = "https://video.bunnycdn.com"
 
 	// AccessKeyHeaderKey is the name of the HTTP header that contains the Bunny API key.
@@ -62,9 +61,19 @@ var discardLogF = func(string, ...interface{}) {}
 // The APIKey can be found in on the Account Settings page.
 //
 // Bunny.net API docs: https://support.bunny.net/hc/en-us/articles/360012168840-Where-do-I-find-my-API-key-
-func NewClient(APIKey string, opts ...Option) *Client {
+func NewClient(APIKey string, url string, opts ...Option) *Client {
+	var useUrl = ""
+
+	if url == "stream" {
+		useUrl = VideoURL
+	} else if url == "video" {
+		useUrl = VideoURL
+	} else {
+		useUrl = BaseURL
+	}
+
 	clt := Client{
-		baseURL:          mustParseURL(BaseURL),
+		baseURL:          mustParseURL(useUrl),
 		apiKey:           APIKey,
 		httpClient:       *http.DefaultClient,
 		userAgent:        DefaultUserAgent,

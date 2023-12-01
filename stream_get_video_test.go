@@ -11,7 +11,7 @@ import (
 )
 
 func TestStreamGetVideoCRUD(t *testing.T) {
-	clt := bunny.NewClient("")
+	clt := bunny.NewClient("", "stream")
 
 	const videoLibraryId int64 = 179632
 	videoId := "e8117722-7af4-4723-aacf-36fb5f81496d"

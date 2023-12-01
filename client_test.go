@@ -21,7 +21,7 @@ func TestCheckRespWithEmptyUnsuccessfulResp(t *testing.T) {
 		Body:       io.NopCloser(strings.NewReader("")),
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	err = clt.checkResp(req, &resp)
 	require.Error(t, err)
@@ -54,7 +54,7 @@ func TestCheckRespWithJSONBody(t *testing.T) {
 		Body:       io.NopCloser(bytes.NewReader(buf)),
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	err = clt.checkResp(req, &resp)
 	require.Error(t, err)
@@ -82,7 +82,7 @@ func TestCheckRespWithJSONBodyAndMissingContentType(t *testing.T) {
 		Body:       io.NopCloser(bytes.NewReader(buf)),
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	err = clt.checkResp(req, &resp)
 	require.Error(t, err)
@@ -109,7 +109,7 @@ func TestUnmarshalHTTPJSONBody(t *testing.T) {
 		Header: hdr,
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	var msgOut Hostname
 
@@ -132,7 +132,7 @@ func TestUnmarshalHTTPJSONBodyWithMissingContentType(t *testing.T) {
 		Body:       io.NopCloser(bytes.NewReader(buf)),
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	var msgOut Hostname
 
@@ -165,7 +165,7 @@ func TestUnmarshalHTTPJSONBodyWithWrongContentType(t *testing.T) {
 		Body:       io.NopCloser(bytes.NewReader(buf)),
 	}
 
-	clt := NewClient("")
+	clt := NewClient("","")
 
 	var msgOut Hostname
 

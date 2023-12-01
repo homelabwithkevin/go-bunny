@@ -11,7 +11,7 @@ import (
 
 func Example() {
 	apiKey := os.Getenv("BUNNY_API_KEY")
-	clt := bunny.NewClient(apiKey)
+	clt := bunny.NewClient(apiKey, "")
 
 	pz, err := clt.PullZone.Get(context.Background(), 1234)
 	if err != nil {
