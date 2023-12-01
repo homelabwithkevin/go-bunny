@@ -67,10 +67,10 @@ type StreamVideo struct {
 	TranscodingMessages  []TranscodingMessages `json:"transcodingMessages,omitempty"`
 }
 
-// Get retrieves the Storage Zone with the given id.
+// Gets the Video with the given Library Id and Video Id
 //
-// Bunny.net API docs: https://docs.bunny.net/reference/storagezonepublic_index2
-func (s *StorageZoneService) Get(ctx context.Context, id int64) (*StorageZone, error) {
-	path := fmt.Sprintf("storagezone/%d", id)
-	return resourceGet[StorageZone](ctx, s.client, path, nil)
+// Bunny.net API docs: https://docs.bunny.net/reference/video_getvideo
+func (s *StreamService) Get(ctx context.Context, videoLibraryId int64, videoId string) (*StreamVideo, error) {
+	path := fmt.Sprintf("library/%d/videos/%s", videoLibraryId, videoId)
+	return resourceGet[StreamVideo](ctx, s.client, path, nil)
 }

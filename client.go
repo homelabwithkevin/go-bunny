@@ -19,8 +19,15 @@ import (
 const (
 	// BaseURL is the base URL of the Bunny CDN HTTP API.
 	BaseURL = "https://api.bunny.net"
+
+	// VideoURL is the base URL of the Bunny Stream HTTP API.
+	// Stream Video Has Separate API Key than Account!
+	// https://docs.bunny.net/reference/api-overview
+	VideoURL = "https://video.bunnycdn.com"
+
 	// AccessKeyHeaderKey is the name of the HTTP header that contains the Bunny API key.
 	AccessKeyHeaderKey = "AccessKey"
+
 	// DefaultUserAgent is the default value of the sent HTTP User-Agent header.
 	DefaultUserAgent = "bunny-go"
 )
@@ -48,17 +55,30 @@ type Client struct {
 	StorageZone  *StorageZoneService
 	DNSZone      *DNSZoneService
 	VideoLibrary *VideoLibraryService
+	Stream       *StreamService
 }
 
 var discardLogF = func(string, ...interface{}) {}
 
 // NewClient returns a new bunny.net API client.
 // The APIKey can be found in on the Account Settings page.
+// Stream Video Has Separate API Key than Account!
+// https://docs.bunny.net/reference/api-overview
 //
 // Bunny.net API docs: https://support.bunny.net/hc/en-us/articles/360012168840-Where-do-I-find-my-API-key-
-func NewClient(APIKey string, opts ...Option) *Client {
+func NewClient(APIKey string, url string, opts ...Option) *Client {
+	var useUrl = ""
+
+	if url == "stream" {
+		useUrl = VideoURL
+	} else if url == "video" {
+		useUrl = VideoURL
+	} else {
+		useUrl = BaseURL
+	}
+
 	clt := Client{
-		baseURL:          mustParseURL(BaseURL),
+		baseURL:          mustParseURL(useUrl),
 		apiKey:           APIKey,
 		httpClient:       *http.DefaultClient,
 		userAgent:        DefaultUserAgent,
@@ -71,6 +91,7 @@ func NewClient(APIKey string, opts ...Option) *Client {
 	clt.StorageZone = &StorageZoneService{client: &clt}
 	clt.DNSZone = &DNSZoneService{client: &clt}
 	clt.VideoLibrary = &VideoLibraryService{client: &clt}
+	clt.Stream = &StreamService{client: &clt}
 
 	for _, opt := range opts {
 		opt(&clt)
