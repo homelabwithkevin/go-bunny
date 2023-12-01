@@ -82,19 +82,21 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
   - [ ] Remove Blocked Referer
 - [ ] Edge Storage API
 - [ ] Stream API
-  - [ ] [Get Video](https://docs.bunny.net/reference/video_getvideo)
-  - [ ] Update Video
-  - [ ] Delete Video
-  - [ ] Upload Video
-  - [ ] Get Video Heatmap
-  - [ ] Get Video Statistics
-  - [ ] Reencode Video
-  - [ ] List Videos
-  - [ ] Create Video
-  - [ ] Set Thumbnail
-  - [ ] Fetch Video
-  - [ ] Add Caption
-  - [ ] Delete Caption
+  - [ ] Manage Collections
+  - [ ] Manage Videos
+    - [ ] [Get Video](https://docs.bunny.net/reference/video_getvideo)
+    - [ ] Update Video
+    - [ ] Delete Video
+    - [ ] Upload Video
+    - [ ] Get Video Heatmap
+    - [ ] Get Video Statistics
+    - [ ] Reencode Video
+    - [ ] List Videos
+    - [ ] Create Video
+    - [ ] Set Thumbnail
+    - [ ] Fetch Video
+    - [ ] Add Caption
+    - [ ] Delete Caption
 
 ## Example
 
