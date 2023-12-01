@@ -22,4 +22,10 @@ func TestStreamGetVideoCRUD(t *testing.T) {
 	fmt.Print(videoInformation)
 	require.NoError(t, err, "video get failed")
 	assert.NotNil(t, videoInformation)
+	assert.Equal(
+		t,
+		videoInformation.VideoLibraryId,
+		videoLibraryId,
+		"library id is incorrect",
+	)
 }
