@@ -13,6 +13,12 @@ type Captions struct {
 	Label   string `json:"label,omitempty"`
 }
 
+type Chapters struct {
+	Title string `json:"title,omitempty"`
+	Start string `json:"start,omitempty"`
+	End   string `json:"end,omitempty"`
+}
+
 type StreamVideo struct {
 	VideoLibraryId       int64      `json:"videoLibraryId,omitempty"`
 	Guid                 string     `json:"guid,omitempty"`
@@ -37,7 +43,7 @@ type StreamVideo struct {
 	AverageWatchTime     int64      `json:"averageWatchTime,omitempty"`
 	TotalWatchTime       int64      `json:"totalWatchTime,omitempty"`
 	Category             string     `json:"category,omitempty"`
-	Chapters             string     `json:"chapters,omitempty"`
+	Chapters             []Chapters     `json:"chapters,omitempty"`
 	Moments              string     `json:"moments,omitempty"`
 	MetaTags             string     `json:"metaTags,omitempty"`
 	TranscodingMessages  string     `json:"transcodingMessages,omitempty"`
