@@ -11,6 +11,8 @@ import (
 )
 
 func TestStreamGetVideoCRUD(t *testing.T) {
+	// Stream Video Has Separate API Key than Account!
+	// https://docs.bunny.net/reference/api-overview
 	clt := bunny.NewClient("", "stream")
 
 	const videoLibraryId int64 = 179632

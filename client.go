@@ -21,10 +21,13 @@ const (
 	BaseURL = "https://api.bunny.net"
 
 	// VideoURL is the base URL of the Bunny Stream HTTP API.
+	// Stream Video Has Separate API Key than Account!
+	// https://docs.bunny.net/reference/api-overview
 	VideoURL = "https://video.bunnycdn.com"
 
 	// AccessKeyHeaderKey is the name of the HTTP header that contains the Bunny API key.
 	AccessKeyHeaderKey = "AccessKey"
+
 	// DefaultUserAgent is the default value of the sent HTTP User-Agent header.
 	DefaultUserAgent = "bunny-go"
 )
@@ -59,6 +62,8 @@ var discardLogF = func(string, ...interface{}) {}
 
 // NewClient returns a new bunny.net API client.
 // The APIKey can be found in on the Account Settings page.
+// Stream Video Has Separate API Key than Account!
+// https://docs.bunny.net/reference/api-overview
 //
 // Bunny.net API docs: https://support.bunny.net/hc/en-us/articles/360012168840-Where-do-I-find-my-API-key-
 func NewClient(APIKey string, url string, opts ...Option) *Client {
