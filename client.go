@@ -18,7 +18,12 @@ import (
 
 const (
 	// BaseURL is the base URL of the Bunny CDN HTTP API.
-	BaseURL = "https://api.bunny.net"
+	// BaseURL = "https://api.bunny.net"
+
+	// VideoURL is the base URL of the Bunny Stream HTTP API.
+	BaseURL  = "https://video.bunnycdn.com"
+	VideoURL = "https://video.bunnycdn.com"
+
 	// AccessKeyHeaderKey is the name of the HTTP header that contains the Bunny API key.
 	AccessKeyHeaderKey = "AccessKey"
 	// DefaultUserAgent is the default value of the sent HTTP User-Agent header.
@@ -48,6 +53,7 @@ type Client struct {
 	StorageZone  *StorageZoneService
 	DNSZone      *DNSZoneService
 	VideoLibrary *VideoLibraryService
+	Stream       *StreamService
 }
 
 var discardLogF = func(string, ...interface{}) {}
@@ -71,6 +77,7 @@ func NewClient(APIKey string, opts ...Option) *Client {
 	clt.StorageZone = &StorageZoneService{client: &clt}
 	clt.DNSZone = &DNSZoneService{client: &clt}
 	clt.VideoLibrary = &VideoLibraryService{client: &clt}
+	clt.Stream = &StreamService{client: &clt}
 
 	for _, opt := range opts {
 		opt(&clt)
