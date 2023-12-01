@@ -5,17 +5,6 @@ import (
 	"fmt"
 )
 
-// StreamVideolist represents the response of the List Videos of the Stream Manage Videos API endpoint.
-//
-// Bunny.net API docs: https://docs.bunny.net/reference/video_list
-
-type StreamVideoList struct {
-	TotalItems   int64         `json:"totalItems,omitempty"`
-	CurrentPage  int64         `json:"currentPage,omitempty"`
-	ItemsPerPage int32         `json:"itemsPerPage,omitempty"`
-	Items        []StreamVideo `json:"items,omitempty"`
-}
-
 // StreamVideos represents the response of the List Videos of the Stream Manage Videos API endpoint.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_list
@@ -27,7 +16,9 @@ type StreamVideoListListOpts struct {
 	PaginationOptions
 }
 
-// List retrieves the Videos in the Stream Library, by Library Id
+// List retrieves the Videos in th
+// if opts.Page or or opts.PerPage is < 1, the related DefaultPagination values are used.e Stream Library, by Library Id
+//
 // Bunny.net API docs: https://docs.bunny.net/reference/video_list
 func (s *StreamService) List(ctx context.Context, videoLibraryId int64, opts *StreamVideoListListOpts) (*StreamVideos, error) {
 	path := fmt.Sprintf("/library/%d/videos", videoLibraryId)
