@@ -20,8 +20,13 @@ type Chapters struct {
 }
 
 type Moments struct {
-	Label   string `json:"label,omitempty"`
+	Label     string `json:"label,omitempty"`
 	Timestamp string `json:"timestamp,omitempty"`
+}
+
+type MetaTags struct {
+	Property string `json:"property,omitempty"`
+	Value    string `json:"value,omitempty"`
 }
 
 type StreamVideo struct {
@@ -48,9 +53,9 @@ type StreamVideo struct {
 	AverageWatchTime     int64      `json:"averageWatchTime,omitempty"`
 	TotalWatchTime       int64      `json:"totalWatchTime,omitempty"`
 	Category             string     `json:"category,omitempty"`
-	Chapters             []Chapters     `json:"chapters,omitempty"`
-	Moments              []Moments     `json:"moments,omitempty"`
-	MetaTags             string     `json:"metaTags,omitempty"`
+	Chapters             []Chapters `json:"chapters,omitempty"`
+	Moments              []Moments  `json:"moments,omitempty"`
+	MetaTags             []MetaTags `json:"metaTags,omitempty"`
 	TranscodingMessages  string     `json:"transcodingMessages,omitempty"`
 }
 
