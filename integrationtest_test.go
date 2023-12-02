@@ -57,7 +57,6 @@ func createPullZone(t *testing.T, clt *bunny.Client, opts *bunny.PullZoneAddOpti
 	return pz
 }
 
-
 // createStorageZone creates a Storage Zone via the bunny client and registers a
 // testing cleanup function to remove it when the test terminates.
 // If creating the Storage Zone fails, t.Fatal is called.
@@ -84,7 +83,6 @@ func createStorageZone(t *testing.T, clt *bunny.Client, opts *bunny.StorageZoneA
 	return sz
 }
 
-
 // createVideoLibrary creates a Video Library via the bunny client and registers a
 // testing cleanup function to remove it when the test terminates.
 // If creating the Video Library fails, t.Fatal is called.
@@ -109,4 +107,17 @@ func createVideoLibrary(t *testing.T, clt *bunny.Client, opts *bunny.VideoLibrar
 	})
 
 	return vl
+}
+
+func createStreamVideo(t *testing.T, clt *bunny.Client, opts *bunny.StreamCreateVideoOptions) *bunny.StreamVideo {
+	t.Helper()
+
+	cv, err := clt.Stream.Create(context.Background(), opts)
+
+	require.NoError(t, err, "creating video library failed")
+	require.NotNil(t, cv.Guid, "add returned video guid with nil id")
+
+	t.Logf("created video: guid: %s", *cv.Guid)
+
+	return cv
 }
