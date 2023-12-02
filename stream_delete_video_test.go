@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/simplesurance/bunny-go"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -17,11 +16,20 @@ func TestStreamDeleteVideoCRUD(t *testing.T) {
 
 	// Personal values, use your own
 	const videoLibraryId int64 = 179632
-	videoId = "1234"
+
+	createVideoOptions := bunny.StreamCreateVideoOptions{
+		VideoLibraryId: videoLibraryId,
+		Title:          "golang-testing",
+		CollectionId:   "",
+		ThumbnailTime:  nil,
+	}
+
+	resultCreateVideo, err := clt.Stream.Create(context.Background(), &createVideoOptions)
+	videoId := resultCreateVideo.Guid
 
 	videoOptions := bunny.StreamDeleteVideoOptions{
 		VideoLibraryId: videoLibraryId,
-		VideoId: videoId,
+		VideoId:        videoId,
 	}
 
 	result, err := clt.Stream.Delete(context.Background(), &videoOptions)
