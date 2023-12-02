@@ -10,7 +10,7 @@ import (
 // Bunny.net API docs: https://docs.bunny.net/reference/video_deletevide
 type StreamDeleteVideoOptions struct {
 	VideoLibraryId int64  `json:"VideoLibraryId,omitempty"`
-	VideoId int64  `json:"VideoId,omitempty"`
+	VideoId string  `json:"VideoId,omitempty"`
 }
 
 // Create creates a new Video
