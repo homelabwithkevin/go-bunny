@@ -86,7 +86,7 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
   - [ ] Manage Videos
     - [X] [Get Video](https://docs.bunny.net/reference/video_getvideo)
     - [ ] Update Video
-    - [ ] Delete Video
+    - [X] [Delete Video](https://docs.bunny.net/reference/video_deletevideo)
     - [ ] Upload Video
     - [ ] Get Video Heatmap
     - [ ] Get Video Statistics

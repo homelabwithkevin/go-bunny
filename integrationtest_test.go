@@ -121,3 +121,15 @@ func createStreamVideo(t *testing.T, clt *bunny.Client, opts *bunny.StreamCreate
 
 	return cv
 }
+
+func deleteStreamVideo(t *testing.T, clt *bunny.Client, opts *bunny.StreamDeleteVideoOptions) *bunny.StreamVideo {
+	t.Helper()
+
+	dv, err := clt.Stream.Delete(context.Background(), opts)
+
+	require.NoError(t, err, "delete video failed")
+
+	t.Logf("deleted video: guid: %s", opts.VideoId)
+
+	return dv
+}
