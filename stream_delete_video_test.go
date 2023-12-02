@@ -26,5 +26,5 @@ func TestStreamDeleteVideoCRUD(t *testing.T) {
 
 	result, err := clt.Stream.Delete(context.Background(), &videoOptions)
 	fmt.Print(result)
-	require.NoError(t, err, "video create failed")
+	require.NoError(t, err, "video delete failed")
 }
