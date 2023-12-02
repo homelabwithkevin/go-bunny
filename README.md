@@ -84,15 +84,15 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 - [ ] Stream API
   - [ ] Manage Collections
   - [ ] Manage Videos
-    - [ ] [Get Video](https://docs.bunny.net/reference/video_getvideo)
+    - [X] [Get Video](https://docs.bunny.net/reference/video_getvideo)
     - [ ] Update Video
     - [ ] Delete Video
     - [ ] Upload Video
     - [ ] Get Video Heatmap
     - [ ] Get Video Statistics
     - [ ] Reencode Video
-    - [ ] List Videos
-    - [ ] Create Video
+    - [X] [List Videos](https://docs.bunny.net/reference/video_list)
+    - [X] [Create Video](https://docs.bunny.net/reference/video_createvideo)
     - [ ] Set Thumbnail
     - [ ] Fetch Video
     - [ ] Add Caption
