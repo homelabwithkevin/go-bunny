@@ -9,10 +9,10 @@ import (
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_getvideostatistics
 type StreamVideoStatistics struct {
-	ViewsChart        []any `json:"viewsChart,omitempty"`
-	WatchTimeChart    []any `json:"watchTimeChart,omitempty"`
-	CountryViewCounts []any `json:"countryViewCounts,omitempty"`
-	CountryWatchTime  []any `json:"countryWatchTime,omitempty"`
+	ViewsChart        any   `json:"viewsChart,omitempty"`
+	WatchTimeChart    any   `json:"watchTimeChart,omitempty"`
+	CountryViewCounts any   `json:"countryViewCounts,omitempty"`
+	CountryWatchTime  any   `json:"countryWatchTime,omitempty"`
 	EngagementScore   int32 `json:"engagementScore,omitempty"`
 }
 
@@ -31,6 +31,6 @@ type StreamVideoStatisticsOptions struct {
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_getvideostatistics
 func (s *StreamService) GetVideoStatistics(ctx context.Context, opts *StreamVideoStatisticsOptions) (*StreamVideoStatistics, error) {
-	path := fmt.Sprintf("library/%d/statistics", opts.VideoLibraryId)
+	path := fmt.Sprintf("library/%d/statistics?videoGuid=%s", opts.VideoLibraryId, opts.VideoGuid)
 	return resourceGet[StreamVideoStatistics](ctx, s.client, path, nil)
 }
