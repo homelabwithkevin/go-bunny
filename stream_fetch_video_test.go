@@ -19,18 +19,18 @@ func TestStreamFetchVideoCRUD(t *testing.T) {
 	videoOptions := bunny.StreamFetchVideoOptions{
 		VideoLibraryId: 179632,
 		CollectionId:   "",
-		ThumbnailTime:  nil,
-		Url:  "",
+		ThumbnailTime:  0,
+		Url:            "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4",
 		Title:          "fetch-testing",
 	}
 
 	result, err := clt.Stream.Fetch(context.Background(), &videoOptions)
 	fmt.Print(result)
-	fmt.Print(result.StatusCode)
+	fmt.Print(result.Success)
 	require.NoError(t, err, "video create failed")
 	assert.Equal(
 		t,
-		result.success,
+		result.Success,
 		1,
 		"fetch was not successful",
 	)
