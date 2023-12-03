@@ -26,12 +26,11 @@ func TestStreamFetchVideoCRUD(t *testing.T) {
 
 	result, err := clt.Stream.Fetch(context.Background(), &videoOptions)
 	fmt.Print(result)
-	fmt.Print(result.Success)
 	require.NoError(t, err, "video create failed")
 	assert.Equal(
 		t,
 		result.Success,
-		1,
+		true,
 		"fetch was not successful",
 	)
 }
