@@ -7,7 +7,7 @@ import (
 
 // StreamCreateVideoOptions are the request parameters for the Stream Create Video API endpoint.
 //
-// Bunny.net API docs: https://docs.bunny.net/reference/video_deletevide
+// Bunny.net API docs: https://docs.bunny.net/reference/video_deletevideo
 type StreamDeleteVideoOptions struct {
 	VideoLibraryId int64  `json:"VideoLibraryId,omitempty"`
 	VideoId        string `json:"VideoId,omitempty"`
