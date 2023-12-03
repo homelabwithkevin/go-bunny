@@ -94,7 +94,7 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
     - [X] [List Videos](https://docs.bunny.net/reference/video_list)
     - [X] [Create Video](https://docs.bunny.net/reference/video_createvideo)
     - [ ] Set Thumbnail
-    - [ ] Fetch Video
+    - [X] [Fetch Video](https://docs.bunny.net/reference/video_fetchnewvideo)
     - [ ] Add Caption
     - [ ] Delete Caption
 
