@@ -10,19 +10,25 @@ import (
 // Bunny.net API docs: https://docs.bunny.net/reference/video_fetchnewvideo
 type StreamFetchVideoOptions struct {
 	VideoLibraryId int64  `json:"VideoLibraryId,omitempty"`
-	CollectionId          string `json:"CollectionId,omitempty"`
-	ThumbnailTime   int32 `json:"ThumbnailTime,omitempty"`
-	Url          string `json:"Url,omitempty"`
+	CollectionId   string `json:"CollectionId,omitempty"`
+	ThumbnailTime  int32  `json:"ThumbnailTime,omitempty"`
+	Url            string `json:"Url,omitempty"`
 	Title          string `json:"Title,omitempty"`
+}
+
+type StreamVideoFetch struct {
+	Success    bool   `json:"success,omitempty"`
+	Message    string `json:"message,omitempty"`
+	StatusCode int32  `json:"statusCode,omitempty"`
 }
 
 // Create creates a new Video
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/video_fetchnewvideo
-func (s *StreamService) Fetch(ctx context.Context, opts *StreamFetchVideoOptions) (*StreamVideo, error) {
+func (s *StreamService) Fetch(ctx context.Context, opts *StreamFetchVideoOptions) (*StreamVideoFetch, error) {
 	videoLibraryId := fmt.Sprintf("/library/%d/videos/fetch", opts.VideoLibraryId)
 
-	return resourcePostWithResponse[StreamVideo](
+	return resourcePostWithResponse[StreamVideoFetch](
 		ctx,
 		s.client,
 		videoLibraryId,
